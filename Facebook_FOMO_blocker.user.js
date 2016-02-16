@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        Facebook FOMO blocker
 // @namespace   http://mydickonfacebooksdick.net
-// @version      1.1.0
+// @version      1.1.1
 // @description Facebook is a master of making you have Fear Of Missing Out. This removes the most eregious pushers of that drug. 
 // @author       kousu@kousu.ca
 // @require      http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js

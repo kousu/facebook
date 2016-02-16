@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Facebook "Likes" Remover
 // @namespace    http://jferg.net
-// @version      1.0.23
+// @version      1.0.24
 // @description  Remove "Like" feature from Facebook: removes the buttons, the like counters, and notifications/tickers about them
 //               
 //               Likes are a shallow form of interaction:
