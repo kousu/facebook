@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Facebook "Likes" Remover
 // @namespace    http://jferg.net
-// @version      1.0.24
+// @version      1.0.25
 // @description  Remove "Like" feature from Facebook: removes the buttons, the like counters, and notifications/tickers about them
 //               
 //               Likes are a shallow form of interaction:
@@ -70,18 +70,16 @@ waitForKeyElements ("li", function(n) {
     // <li class="_3sod _3soe hidden_elem" data-gt="{&quot;notif_type&quot;:&quot;like&quot;,&quot;context_id&quot;:&quot;10153897669733770&quot;,&quot;alert_id&quot;:&quot;1455155772193465&quot;,&quot;unread&quot;:1,&quot;from_uids&quot;:{&quot;1007227487&quot;:1007227487}}" style="opacity: 0; transition-duration: 0ms;">
     var _n = n.get()[0]; // get out of jQuery
     if(_n.dataset && _n.dataset.gt) {
-       var metadata = JSON.parse(_n.dataset.gt);
-       if(metadata.notif_type) {
-           // there's more than one type of 'like' notification:
-           // we've observed at least:
-           // {"notif_type": 'like'}
-           // {"notif_type": 'like_tagged'}
-           // {"notif_type": "group_highlights","subtype": "highlights_friend_liker_commenter"}
-           // This is a guess, but probably all of them will contain the word "like" in,
-           // so if we just drop any notification like that we should be good.
-           if(metadata.notif_type.indexOf("like") != -1 || metadata.subtype.indexOf("like") != -1) {
-               n.remove();
-           }
+        var metadata = JSON.parse(_n.dataset.gt);
+        // there's more than one type of 'like' notification:
+        // we've observed at least:
+        // {"notif_type": 'like'}
+        // {"notif_type": 'like_tagged'}
+        // {"notif_type": "group_highlights","subtype": "highlights_friend_liker_commenter"}
+        // This is a guess, but probably all of them will contain the word "like" in,
+        // so if we just drop any notification like that we should be good.
+        if((metadata.notif_type && metadata.notif_type.indexOf("like") != -1) || (metadata.subtype && metadata.subtype.indexOf("like") != -1)) {
+            n.remove();
        }
     }
 });
